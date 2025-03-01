@@ -1,0 +1,187 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: adopt-animals-api
+  description: Adopt Animals REST API
+basePath: /api/v1
+tags:
+  - name: Animals
+    description: Endpoints for retrieving animals data
+  - name: Specification
+    description: The swagger API specification
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+
+definitions:
+  Animal:
+    type: object
+    title: Animal
+    required:
+      - name
+      - type
+      - gender
+      - breed
+      - birthdate
+      - zone
+      - peltColor
+      - eyesColor
+      - description
+      - contact
+    properties:
+      id:
+        type: integer
+        example: 1
+        readOnly: true
+      name:
+        type: string
+        example: 'Pepe'
+      type:
+        type: string
+        example: 'dog'
+      gender:
+        type: string
+        example: 'male'
+      breed:
+        type: string
+        example: 'Akita'
+      birthdate:
+        type: "string"
+        format: "date"
+      zone:
+        type: string
+        example: 'Buceo'
+      peltColor:
+        type: string
+        example: 'Gris'
+      eyesColor:
+        type: string
+        example: 'Negro'
+      description:
+        type: string
+        example: 'Divertido, mimoso y bueno.'
+      contact:
+        $ref: "#/definitions/Contact"
+  Contact:
+    type: object
+    title: Contact
+    required:
+      - name
+      - email
+      - phone
+    properties:
+      name:
+        type: string
+        example: 'John Doe'
+      email:
+        type: string
+        example: 'john.doe@gmail.com'
+      phone:
+        type: string
+        example: '+598 094135268'
+
+paths:
+  /animals:
+    get:
+      tags:
+        - Animals
+      description: Fetch all animals
+      responses:
+        200:
+          schema: 
+            $ref: "#/definitions/Animal"
+          description: Returns all animals
+    post:
+      tags:
+        - Animals
+      description: Create a new animal for adopt
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+        - name: Animal
+          in: body
+          description: new animal information
+          required: true
+          schema: 
+            $ref: "#/definitions/Animal"
+      responses:
+        201:
+          description: Returns new created animal
+        400:
+          description: Invalid input
+
+  /animals/{id}:
+    get:
+      tags:
+        - Animals
+      description: Retrieves a specific animal by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the animal to retrieve
+          type: integer
+      responses:
+        200:
+          schema: 
+            $ref: "#/definitions/Animal"
+          description: Returns the animal with the specified id
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Animal not found
+    put:
+      tags:
+        - Animals
+      description: Updates a specific animal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the animal to update
+          type: integer
+        - name: Animal
+          in: body
+          description: updated animal information
+          required: true
+          schema: 
+            $ref: "#/definitions/Animal"
+      responses:
+        202:
+          schema: 
+            $ref: "#/definitions/Animal"
+          description: Returns the updated animal
+        400:
+          description: Invalid input
+        404:
+          description: Animal not found
+    delete:
+      tags:
+        - Animals
+      description: Deletes an animal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the animal to delete
+          type: integer
+      responses:
+        204:
+          description: Animal deleted
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Animal not found
+
+  /spec:
+    get:
+      tags:
+        - Specification
+      responses:
+        200:
+          description: Return the API specification

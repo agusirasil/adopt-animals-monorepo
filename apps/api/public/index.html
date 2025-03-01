@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>adopt-animals-api</title>
+</head>
+
+<body>
+    <h1>Welcome to adopt-animals-api</h1>
+    <ul>
+        <li>
+            <h3><a href="/api-explorer/">Interactive API Doc!</a></h3>
+        </li>
+    </ul>
+
+    <br />
+    <br />
+    <br />
+    <h3>Animals List</h3>
+    <div id="animals-list"></div>
+
+    <script>
+        const apiUrl = 'http://localhost:8000/api/v1';
+        const loadAnimals = async () => {
+            document.querySelector('#animals-list').innerHTML = 'Loading animals...';
+            const response = await fetch(apiUrl + '/animals');
+            const animalsList = await response.json();
+            var animalCards = animalsList.map(item => '<li>' + item.name + '</li>').join('');
+            document.querySelector('#animals-list').innerHTML = animalCards;
+        }
+
+        loadAnimals();
+
+        function addAnimal() {
+            var data = {
+                name: "Pepe",
+                type: "dog",
+                gender: "male",
+                breed: "Akita",
+                birthdate: "2019-07-04",
+                zone: "Buceo",
+                peltColor: "Gris",
+                eyesColor: "Negro",
+                description: "Divertido, mimoso y bueno.",
+                contact: {
+                    name: "John Doe",
+                    email: "john.doe@gmail.com",
+                    phone: "+598 094135268"
+                }
+            };
+
+            const createdAnimal = fetch(apiUrl + '/animals', {
+                method: 'POST',
+                body: JSON.stringify(data), // JS object converted to string on JSON format.
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json());
+        }
+    </script>
+</body>
+
+</html>

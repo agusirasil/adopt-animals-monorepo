@@ -1,0 +1,15 @@
+{
+  "private": "true",
+  "name": "adopt-animals-monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "workspaces": [
+   "apps/*"
+  ],
+  "scripts": {
+    "api:dev": "yarn workspace api dev",
+    "api:build": "yarn workspace api build",
+    "api:start": "yarn workspace api start"
+  }
+}

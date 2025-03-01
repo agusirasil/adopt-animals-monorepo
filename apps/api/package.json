@@ -1,0 +1,33 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Adopt Animals REST API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/server/index.js",
+    "build": "node build.js && tsc --build",
+    "dev": "nodemon server/index.ts | pino-pretty"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "pino": "^5.11.1",
+    "swagger-express-middleware": "^2.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.26",
+    "@types/express": "^4.16.1",
+    "@types/node": "^22.13.8",
+    "@types/pino": "^5.8.5",
+    "nodemon": "^1.19.0",
+    "pino-pretty": "^2.6.1",
+    "shelljs": "^0.8.3"
+  },
+  "author": "Andres Amor <andy.7love@gmail.com> (https://github.com/andy7love)"
+}
