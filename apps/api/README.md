@@ -7,7 +7,7 @@ Adopt Animals REST API
 
 Copy .env.example to .env file. 
 
-```
+```shell
 yarn
 ```
 
