@@ -47,7 +47,7 @@ class AnimalForm extends React.Component {
         type: this.props.animal.type,
         gender: this.props.animal.gender,
         breed: this.props.animal.breed,
-        birthdate: this.props.animal.birthdate,
+        birthdate: new Date(this.props.animal.birthdate).toISOString().split('T')[0],
         zone: this.props.animal.zone,
         peltColor: this.props.animal.peltColor,
         eyesColor: this.props.animal.eyesColor,

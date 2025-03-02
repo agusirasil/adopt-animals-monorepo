@@ -1,9 +1,18 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+
+const styles = theme => ({
+  tableRow: {
+    '&:hover': {
+      backgroundColor: '#fafaff'
+    }
+  }
+});
 
 class AnimalListItem extends React.Component {
   editAnimal = () => {
@@ -16,7 +25,7 @@ class AnimalListItem extends React.Component {
 
   render() {
     return (
-      <TableRow>
+      <TableRow className={this.props.classes.tableRow}>
         <TableCell component="th" scope="row">
           {this.props.animal.name}
         </TableCell>
@@ -37,4 +46,4 @@ class AnimalListItem extends React.Component {
   }
 }
 
-export default AnimalListItem;
+export default withStyles(styles)(AnimalListItem);

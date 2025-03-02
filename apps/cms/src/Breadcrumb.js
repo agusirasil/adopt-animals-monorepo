@@ -36,7 +36,7 @@ class Breadcrumb extends React.Component {
     }
 
     addNewAnimalButton() {
-        if (this.props.section !== 'newAnimal') {
+        if (this.props.section === 'list') {
             return (
                 <Fab color="primary" aria-label="Add" className={this.props.classes.fab} onClick={this.props.goToNewAnimal}>
                     <AddIcon />

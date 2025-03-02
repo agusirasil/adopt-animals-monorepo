@@ -4,7 +4,7 @@ import delay from '../../../../tools/delay';
 
 export class Controller {
   all(req: Request, res: Response): void {
-    delay(2000).then(() => {
+    delay(500).then(() => {
       AnimalService.all().then(r => res.json(r));
     });
   }
