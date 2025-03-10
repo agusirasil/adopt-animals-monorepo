@@ -135,7 +135,6 @@ test.describe('Animals Resource', () => {
 
   //PUT (Update) Pets Fails
   test("PUT using the incorrect resource should return 404", async () => {
-    const apiContext = await request.newContext();
     const PutUpdatedPet = await apiContext.put(`${url}/animalls/2`,
       {
         data: NewPetDataUpdate
@@ -144,7 +143,6 @@ test.describe('Animals Resource', () => {
   });
   
   test("PUT using the incorrect data should return 400", async () => {
-    const apiContext = await request.newContext();
     const PutUpdatedPet = await apiContext.put(`${url}/animals/2`,
       {
         data: NewPetDataFail
@@ -153,7 +151,6 @@ test.describe('Animals Resource', () => {
   });
 
   test("PUT using invalid parameters should return 400", async () => {
-    const apiContext = await request.newContext();
     const PutUpdatedPet = await apiContext.put(`${url}/animals/2`,
       {
         data: NewPetDataSetFailWrongParameter
