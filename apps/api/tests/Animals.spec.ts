@@ -19,16 +19,16 @@ test.describe('Animals Resource', () => {
 
   //GET Pet List Pass
   test("GET animals should return the pet list with the correct data", async () => {
-    const petList = await apiContext.get(`${baseURL}/animals`);
-    const petListData = await petList.json();
-    expect(petList).toBeOK();
+    const petListResponse = await apiContext.get(`${baseURL}/animals`);
+    const petListData = await petListResponse.json();
+    expect(petListResponse).toBeOK();
     expect(petListData).toEqual(AnimalsList);
   });
 
   //GET Pet List Fail
   test("GET animals using the incorrect resource should return 404", async () => {
-    const petList = await apiContext.get(`${baseURL}/animalls`);
-    expect(petList.status()).toBe(404);
+    const petListResponse = await apiContext.get(`${baseURL}/animalls`);
+    expect(petListResponse.status()).toBe(404);
   });
 
   //GET First Pet Pass
@@ -66,13 +66,13 @@ test.describe('Animals Resource', () => {
 
     // GET Request to compare with
     const getPetResponse = await apiContext.get(`${baseURL}/animals/${postPetData.id}`);
-    const getPetResponseData = await getPetResponse.json();
+    const getPetData = await getPetResponse.json();
     const expectedData = {
       ...NewPet,
       id: postPetData.id,
       birthdate: postPetData.birthdate
     }
-    expect(getPetResponseData).toEqual(expectedData);
+    expect(getPetData).toEqual(expectedData);
   });
 
   //POST Add New Pet Fails
@@ -114,13 +114,13 @@ test.describe('Animals Resource', () => {
 
     // GET Request to compare with
     const getPetResponse = await apiContext.get(`${baseURL}/animals/${updatedPetData.id}`);
-    const getPetResponseData = await getPetResponse.json();
+    const getPetData = await getPetResponse.json();
     const expectedData = {
       ...NewPetUpdate,
       id: updatedPetData.id,
       birthdate: updatedPetData.birthdate
     }
-    expect(getPetResponseData).toEqual(expectedData);
+    expect(getPetData).toEqual(expectedData);
   });
 
   //PUT (Update) Pets Fails
