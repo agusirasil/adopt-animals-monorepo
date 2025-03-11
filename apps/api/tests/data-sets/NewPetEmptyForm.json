@@ -1,0 +1,16 @@
+{
+    "name": "",
+    "type": "",
+    "gender": "",
+    "breed": "",
+    "birthdate": "",
+    "zone": "",
+    "peltColor": "",
+    "eyesColor": "",
+    "description": "",
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": ""
+    }
+}

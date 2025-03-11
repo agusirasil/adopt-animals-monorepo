@@ -1,0 +1,16 @@
+{
+    "name": "Pepe",
+    "type": "dog",
+    "gender": "male",
+    "breed": "Akita",
+    "birthdate": "2025-03-05",
+    "zone": "Buceo",
+    "peltColor": 5,
+    "eyesColor": "Negro",
+    "description": "Divertido, mimoso y bueno.",
+    "contact": {
+      "name": "John Doe",
+      "email": "john.doe@gmail.com",
+      "phone": "+598 094135268"
+    }
+}
