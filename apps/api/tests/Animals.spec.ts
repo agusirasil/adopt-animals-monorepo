@@ -47,13 +47,13 @@ test.describe('Animals Resource', () => {
   });
 
   test("GET animal with a non-existent id should return 404", async () => {
-    const firstPetResponse = await apiContext.get(`${baseURL}/animals/45`);
-    expect(firstPetResponse.status()).toBe(404);
+    const getPetResponse = await apiContext.get(`${baseURL}/animals/45`);
+    expect(getPetResponse.status()).toBe(404);
   });
 
   test("GET animal with an invalid id should return 400", async () => {
-    const firstPetResponse = await apiContext.get(`${baseURL}/animals/ñ`);
-    expect(firstPetResponse.status()).toBe(400);
+    const getPetResponse = await apiContext.get(`${baseURL}/animals/ñ`);
+    expect(getPetResponse.status()).toBe(400);
   });
 
   //POST Add New Pet Pass
